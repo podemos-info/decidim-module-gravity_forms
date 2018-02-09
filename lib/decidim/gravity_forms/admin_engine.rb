@@ -9,13 +9,12 @@ module Decidim
       paths["db/migrate"] = nil
 
       routes do
-        # Add admin engine routes here
-        # resources :gravity_forms do
+        resources :gravity_forms
         #   collection do
         #     resources :exports, only: [:create]
         #   end
         # end
-        # root to: "gravity_forms#index"
+        root to: "gravity_forms#index"
       end
 
       initializer "decidim_gravity_forms.inject_abilities_to_user" do |_app|

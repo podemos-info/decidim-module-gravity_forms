@@ -24,11 +24,9 @@ Decidim.register_feature(:gravity_forms) do |feature|
   #   # Add your settings per step
   # end
 
-  # feature.register_resource do |resource|
-  #   # Register a optional resource that can be references from other resources.
-  #   resource.model_class_name = "Decidim::GravityForms::SomeResource"
-  #   resource.template = "decidim/gravity_forms/some_resources/linked_some_resources"
-  # end
+  feature.register_resource do |resource|
+    resource.model_class_name = "Decidim::GravityForms::GravityForm"
+  end
 
   # feature.register_stat :some_stat do |context, start_at, end_at|
   #   # Register some stat number to the application

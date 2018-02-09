@@ -10,9 +10,9 @@ module Decidim
       isolate_namespace Decidim::GravityForms
 
       routes do
-        # Add engine routes here
-        # resources :gravity_forms
-        # root to: "gravity_forms#index"
+        resources :gravity_forms, only: [:index, :show]
+
+        root to: "gravity_forms#index"
       end
 
       initializer "decidim_gravity_forms.assets" do |app|

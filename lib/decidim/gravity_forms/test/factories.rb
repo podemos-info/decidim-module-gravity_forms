@@ -9,5 +9,8 @@ FactoryBot.define do
     participatory_space { create(:participatory_process, :with_steps) }
   end
 
-  # Add engine factories here
+  factory :gravity_form, class: "Decidim::GravityForms::GravityForm" do
+    title { Faker::Lorem.sentence }
+    feature { create(:gravity_forms_feature) }
+  end
 end

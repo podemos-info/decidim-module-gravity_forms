@@ -4,3 +4,20 @@ en:
     features:
       gravity_forms:
         name: GravityForms
+    gravity_forms:
+      actions:
+        new: New
+        preview: Preview
+        title: Actions
+      admin:
+        gravity_forms:
+          index:
+            title: Gravity Forms
+        models:
+          gravity_form:
+            name: Gravity Form
+      models:
+        gravity_form:
+          fields:
+            id: ID
+            title: Title
