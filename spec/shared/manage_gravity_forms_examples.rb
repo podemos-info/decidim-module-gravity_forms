@@ -1,6 +1,38 @@
 # frozen_string_literal: true
 
 shared_examples "manage gravity forms" do
+  describe "creating a gravity form" do
+    before do
+      visit_feature_admin
+
+      within ".card-title" do
+        click_link "New"
+      end
+    end
+
+    it "shows a success message and displays the new form on the index page" do
+      within ".new_gravity_form" do
+        fill_in_i18n(
+          :gravity_form_title,
+          "#gravity_form-title-tabs",
+          en: "My gravity form",
+          es: "Mi gravity form",
+          ca: "Meu gravity form"
+        )
+
+        find("*[type=submit]").click
+      end
+
+      within ".callout-wrapper" do
+        expect(page).to have_content("successfully")
+      end
+
+      within "table" do
+        expect(page).to have_content("My gravity form")
+      end
+    end
+  end
+
   describe "previewing gravity forms" do
     it "allows the user to preview the gravity form" do
       within find("tr", text: gravity_form.title) do

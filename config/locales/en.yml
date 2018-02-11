@@ -11,6 +11,12 @@ en:
         title: Actions
       admin:
         gravity_forms:
+          create:
+            invalid: There has been a problem while creating the gravity form.
+            success: Gravity form created successfully.
+          new:
+            create: Create Gravity Form
+            title: New Gravity Form
           index:
             title: Gravity Forms
         models:
