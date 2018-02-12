@@ -32,7 +32,19 @@ Decidim.register_feature(:gravity_forms) do |feature|
   #   # Register some stat number to the application
   # end
 
-  # feature.seeds do |participatory_space|
-  #   # Add some seeds for this feature
-  # end
+  feature.seeds do |participatory_space|
+    feature = Decidim::Feature.create!(
+      name: Decidim::Features::Namer.new(participatory_space.organization.available_locales, :gravity_forms).i18n_name,
+      manifest_name: :gravity_forms,
+      published_at: Time.current,
+      participatory_space: participatory_space
+    )
+
+    Decidim::GravityForms::GravityForm.create!(
+      feature: feature,
+      title: Decidim::Faker::Localized.sentence(2),
+      slug: Faker::Internet.unique.slug(nil, "-"),
+      form_number: 1
+    )
+  end
 end
