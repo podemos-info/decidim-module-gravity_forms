@@ -14,11 +14,9 @@ Decidim.register_feature(:gravity_forms) do |feature|
   # These actions permissions can be configured in the admin panel
   # feature.actions = %w()
 
-  # feature.settings(:global) do |settings|
-  #   # Add your global settings
-  #   # Available types: :integer, :boolean
-  #   # settings.attribute :vote_limit, type: :integer, default: 0
-  # end
+  feature.settings(:global) do |settings|
+    settings.attribute :domain, type: :string
+  end
 
   # feature.settings(:step) do |settings|
   #   # Add your settings per step
@@ -37,7 +35,10 @@ Decidim.register_feature(:gravity_forms) do |feature|
       name: Decidim::Features::Namer.new(participatory_space.organization.available_locales, :gravity_forms).i18n_name,
       manifest_name: :gravity_forms,
       published_at: Time.current,
-      participatory_space: participatory_space
+      participatory_space: participatory_space,
+      settings: {
+        domain: "bored-sloth.w6.gravitydemo.com"
+      }
     )
 
     Decidim::GravityForms::GravityForm.create!(
