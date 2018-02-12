@@ -29,6 +29,8 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
     double(
       invalid?: invalid,
       title: { en: "title" },
+      slug: "my-slug",
+      form_number: "7262",
       current_feature: current_feature
     )
   end

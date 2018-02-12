@@ -7,5 +7,21 @@
     <div class="row column" >
       <%= form.translated :text_field, :title, autofocus: true %>
     </div>
+
+    <div class="row column" >
+      <%= form.text_field :form_number %>
+
+      <p class="help-text">
+        <%== t(".form_number_help") %>
+      </p>
+    </div>
+
+    <div class="row column">
+      <%= form.text_field :slug %>
+
+      <p class="help-text">
+        <%== t(".slug_help", url: decidim_form_slug_url(main_feature_path(current_feature), form.object.slug)) %>
+      </p>
+    </div>
   </div>
 </div>

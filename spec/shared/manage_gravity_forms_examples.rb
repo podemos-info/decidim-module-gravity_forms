@@ -20,6 +20,9 @@ shared_examples "manage gravity forms" do
           ca: "Meu gravity form"
         )
 
+        fill_in "Form number", with: "1"
+        fill_in "Slug", with: "waka-waka"
+
         find("*[type=submit]").click
       end
 

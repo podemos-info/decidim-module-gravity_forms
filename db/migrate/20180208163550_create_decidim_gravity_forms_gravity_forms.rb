@@ -3,10 +3,9 @@
 class CreateDecidimGravityFormsGravityForms < ActiveRecord::Migration[5.1]
   def change
     create_table :decidim_gravity_forms_gravity_forms do |t|
-      t.jsonb :title
-      t.string :slug
-      t.integer :gravity_id
-      t.string :gravity_link
+      t.jsonb :title, null: false
+      t.integer :form_number, null: false
+      t.string :slug, null: false
       t.references :decidim_feature
 
       t.timestamps

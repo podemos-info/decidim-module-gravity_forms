@@ -3,6 +3,10 @@
 require "decidim/core/test/factories"
 
 FactoryBot.define do
+  sequence(:gravity_form_slug) do |n|
+    "#{Faker::Internet.slug(nil, "-")}-#{n}"
+  end
+
   factory :gravity_forms_feature, parent: :feature do
     name { Decidim::Features::Namer.new(participatory_space.organization.available_locales, :gravity_forms).i18n_name }
     manifest_name :gravity_forms
@@ -11,6 +15,8 @@ FactoryBot.define do
 
   factory :gravity_form, class: "Decidim::GravityForms::GravityForm" do
     title { Faker::Lorem.sentence }
+    slug { generate(:gravity_form_slug) }
+    form_number { 1 }
     feature { create(:gravity_forms_feature) }
   end
 end
