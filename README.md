@@ -4,8 +4,11 @@ A gravity forms component for Decidim.
 
 ## Usage
 
-GravityForms will be available as a Feature for a Participatory
-Space.
+It loads a gravity form inside an iframe on a feature of a participatory space.
+The remote wordpress instance to load forms from is configurable as a global
+feature setting. The wordpress instance needs [Gravity
+Forms](https://www.gravityforms.com/) and the [gravity forms iframe
+plugin](https://github.com/cedaro/gravity-forms-iframe) installed.
 
 ## Installation
 
