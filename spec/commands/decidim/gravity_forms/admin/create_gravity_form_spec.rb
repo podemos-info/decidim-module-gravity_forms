@@ -32,6 +32,7 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
       description: { en: "description" },
       slug: "my-slug",
       form_number: "7262",
+      require_login: false,
       current_feature: current_feature
     )
   end
@@ -53,24 +54,15 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
       expect { subject.call }.to change { Decidim::GravityForms::GravityForm.count }.by(1)
     end
 
-    it "sets the feature" do
+    it "sets the correct attributes" do
       subject.call
 
       expect(gravity_form.feature).to eq current_feature
-    end
-
-    it "sets the title" do
-      subject.call
-
-      expect(gravity_form.title.values).to eq ["title"]
-      expect(gravity_form.title.keys).to eq ["en"]
-    end
-
-    it "sets the description" do
-      subject.call
-
-      expect(gravity_form.description.values).to eq ["description"]
-      expect(gravity_form.description.keys).to eq ["en"]
+      expect(translated(gravity_form.title)).to eq "title"
+      expect(translated(gravity_form.description)).to eq "description"
+      expect(gravity_form.slug).to eq "my-slug"
+      expect(gravity_form.form_number).to eq 7262
+      expect(gravity_form.require_login).to eq false
     end
   end
 end

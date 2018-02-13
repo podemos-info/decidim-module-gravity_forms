@@ -13,6 +13,7 @@ module Decidim
 
         attribute :slug, String
         attribute :form_number, Integer
+        attribute :require_login, Boolean
 
         validates :title, translatable_presence: true
         validates :slug, presence: true, format: { with: /\A[a-zA-Z]+[a-zA-Z0-9\-]+\z/ }

@@ -7,6 +7,7 @@ class CreateDecidimGravityFormsGravityForms < ActiveRecord::Migration[5.1]
       t.jsonb :description
       t.integer :form_number, null: false
       t.string :slug, null: false
+      t.boolean :require_login, default: true, null: false
       t.references :decidim_feature
 
       t.timestamps

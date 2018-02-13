@@ -28,6 +28,8 @@ describe "Gravity forms", type: :system do
   end
 
   describe "index page" do
+    let(:require_login) { false }
+
     before do
       create(
         :gravity_form,
@@ -35,7 +37,8 @@ describe "Gravity forms", type: :system do
         title: "My first form",
         description: "Fill this in to become super cool",
         slug: "cuki-form",
-        form_number: 1
+        form_number: 1,
+        require_login: require_login
       )
 
       create(
@@ -55,6 +58,52 @@ describe "Gravity forms", type: :system do
 
       expect(page).to have_selector(".card--gravity_form", text: "My first form Fill this in to become super cool")
       expect(page).to have_selector(".card--gravity_form", text: "My second form Fill this in to become even cooler")
+    end
+
+    shared_examples_for "a locked form" do
+      it "does not grant access" do
+        within find(".card--gravity_form", text: "My first form") do
+          click_link "Fill in"
+        end
+
+        expect(page).to have_content "Please sign in"
+        expect(page).to_not have_selector("iframe")
+      end
+    end
+
+    shared_examples_for "a public form" do
+      it "grants access" do
+        within find(".card--gravity_form", text: "My first form") do
+          click_link "Fill in"
+        end
+
+        expect(page).to render_in_iframe("Tell us a little about yourself")
+      end
+    end
+
+    context "when user logged in" do
+      let(:require_login) { false }
+
+      before do
+        login_as user, scope: :user
+        refresh
+      end
+
+      it_behaves_like "a public form"
+    end
+
+    context "when user not logged in" do
+      context "and form unlocked" do
+        let(:require_login) { false }
+
+        it_behaves_like "a public form"
+      end
+
+      context "and form locked" do
+        let(:require_login) { true }
+
+        it_behaves_like "a locked form"
+      end
     end
   end
 

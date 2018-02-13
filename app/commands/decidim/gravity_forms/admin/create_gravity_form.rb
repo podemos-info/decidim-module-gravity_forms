@@ -31,6 +31,7 @@ module Decidim
             description: form.description,
             slug: form.slug,
             form_number: form.form_number,
+            require_login: form.require_login,
             feature: form.current_feature
           )
         end
