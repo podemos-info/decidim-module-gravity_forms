@@ -38,7 +38,7 @@ shared_examples "manage gravity forms" do
 
   describe "previewing gravity forms" do
     it "allows the user to preview the gravity form" do
-      within find("tr", text: gravity_form.title) do
+      within find("tr", text: translated(gravity_form.title)) do
         klass = "action-icon--preview"
         href = resource_locator(gravity_form).path
         target = "blank"

@@ -43,7 +43,8 @@ Decidim.register_feature(:gravity_forms) do |feature|
 
     Decidim::GravityForms::GravityForm.create!(
       feature: feature,
-      title: Decidim::Faker::Localized.sentence(2),
+      title: Decidim::Faker::Localized.sentence,
+      description: Decidim::Faker::Localized.sentence(3),
       slug: Faker::Internet.unique.slug(nil, "-"),
       form_number: 1
     )

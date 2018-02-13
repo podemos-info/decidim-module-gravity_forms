@@ -22,13 +22,15 @@ describe Decidim::GravityForms::Admin::GravityFormForm do
     create :feature, participatory_space: participatory_process
   end
 
-  let(:title) { Decidim::Faker::Localized.sentence(3) }
+  let(:title) { Decidim::Faker::Localized.sentence }
+  let(:description) { Decidim::Faker::Localized.sentence(3) }
   let(:slug) { "my-slug" }
   let(:form_number) { 1 }
 
   let(:attributes) do
     {
       title: title,
+      description: description,
       slug: slug,
       form_number: form_number
     }

@@ -28,6 +28,7 @@ module Decidim
         def create_gravity_form
           GravityForm.create!(
             title: form.title,
+            description: form.description,
             slug: form.slug,
             form_number: form.form_number,
             feature: form.current_feature

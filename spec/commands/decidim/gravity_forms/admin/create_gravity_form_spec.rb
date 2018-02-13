@@ -29,6 +29,7 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
     double(
       invalid?: invalid,
       title: { en: "title" },
+      description: { en: "description" },
       slug: "my-slug",
       form_number: "7262",
       current_feature: current_feature
@@ -63,6 +64,13 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
 
       expect(gravity_form.title.values).to eq ["title"]
       expect(gravity_form.title.keys).to eq ["en"]
+    end
+
+    it "sets the description" do
+      subject.call
+
+      expect(gravity_form.description.values).to eq ["description"]
+      expect(gravity_form.description.keys).to eq ["en"]
     end
   end
 end

@@ -9,6 +9,7 @@ module Decidim
         include TranslatableAttributes
 
         translatable_attribute :title, String
+        translatable_attribute :description, String
 
         attribute :slug, String
         attribute :form_number, Integer
