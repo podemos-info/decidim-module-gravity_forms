@@ -3,13 +3,16 @@
 module Decidim
   module GravityForms
     class GravityFormsController < Decidim::GravityForms::ApplicationController
-      helper_method :gravity_form
+      helper_method :gravity_form, :gravity_forms
 
       private
 
+      def gravity_forms
+        @gravity_forms ||= GravityForm.where(feature: current_feature)
+      end
+
       def gravity_form
-        @gravity_form ||=
-          GravityForm.where(feature: current_feature).find(params[:id])
+        @gravity_form ||= gravity_forms.find(params[:id])
       end
     end
   end

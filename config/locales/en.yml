@@ -25,6 +25,13 @@ en:
         models:
           gravity_form:
             name: Gravity Form
+      gravity_forms:
+        gravity_form:
+          fill_in: Fill in
+        index:
+          gravity_forms_count:
+            one: "%{count} form"
+            other: "%{count} forms"
       models:
         gravity_form:
           fields:
