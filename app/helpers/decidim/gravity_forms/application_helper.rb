@@ -16,7 +16,7 @@ module Decidim
       #
       # Returns a String with the link.
       def authenticated_link_to(title, gravity_form, html_options = {})
-        if gravity_form.require_login && !user_signed_in?
+        unless accessible_form?(gravity_form)
           html_options["onclick"] = "event.preventDefault();"
           html_options["data-open"] = "loginModal"
         end
