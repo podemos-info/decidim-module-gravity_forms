@@ -19,6 +19,14 @@ describe "Gravity forms", type: :system do
     )
   end
 
+  matcher :render_in_iframe do |content|
+    match do |page|
+      page.within_frame "js-iframe" do
+        expect(page).to have_content(content)
+      end
+    end
+  end
+
   describe "index page" do
     before do
       create(
@@ -79,9 +87,7 @@ describe "Gravity forms", type: :system do
     end
 
     it "shows gravity form content" do
-      within_frame "js-iframe" do
-        expect(page).to have_content "Tell us a little about yourself"
-      end
+      expect(page).to render_in_iframe("Tell us a little about yourself")
     end
   end
 end
