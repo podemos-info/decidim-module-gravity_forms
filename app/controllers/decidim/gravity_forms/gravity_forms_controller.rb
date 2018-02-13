@@ -5,6 +5,8 @@ module Decidim
     class GravityFormsController < Decidim::GravityForms::ApplicationController
       helper_method :gravity_form, :gravity_forms
 
+      before_action :authenticate_user!, only: :show, if: -> { gravity_form.require_login }
+
       private
 
       def gravity_forms
