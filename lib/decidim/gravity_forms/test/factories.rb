@@ -17,7 +17,7 @@ FactoryBot.define do
     title { Decidim::Faker::Localized.sentence }
     description { Decidim::Faker::Localized.sentence(3) }
     slug { generate(:gravity_form_slug) }
-    form_number { 1 }
+    form_number 1
     feature { create(:gravity_forms_feature) }
   end
 end
