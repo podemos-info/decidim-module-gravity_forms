@@ -3,7 +3,7 @@ en:
   decidim:
     features:
       gravity_forms:
-        name: GravityForms
+        name: Forms
     gravity_forms:
       actions:
         new: New
