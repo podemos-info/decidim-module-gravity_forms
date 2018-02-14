@@ -5,7 +5,7 @@ module Decidim
     module Abilities
       # Defines the abilities related to gravity_forms for a logged in admin user.
       # Intended to be used with `cancancan`.
-      class AdminUser
+      class AdminAbility
         include CanCan::Ability
 
         attr_reader :user, :context

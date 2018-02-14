@@ -19,7 +19,7 @@ module Decidim
 
       initializer "decidim_gravity_forms.inject_abilities_to_user" do |_app|
         Decidim.configure do |config|
-          config.admin_abilities += ["Decidim::GravityForms::Abilities::AdminUser"]
+          config.admin_abilities += ["Decidim::GravityForms::Abilities::AdminAbility"]
         end
       end
 
