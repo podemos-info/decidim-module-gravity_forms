@@ -18,12 +18,6 @@ module Decidim
       initializer "decidim_gravity_forms.assets" do |app|
         app.config.assets.precompile += %w(decidim_gravity_forms_manifest.js decidim_gravity_forms_manifest.css)
       end
-
-      initializer "decidim_gravity_forms.inject_abilities_to_user" do |_app|
-        Decidim.configure do |config|
-          config.abilities += ["Decidim::GravityForms::Abilities::CurrentUserAbility"]
-        end
-      end
     end
   end
 end
