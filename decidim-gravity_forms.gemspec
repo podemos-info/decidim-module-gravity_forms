@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.summary = "A decidim gravity_forms module"
   s.description = "A gravity forms component for Decidim."
 
-  s.files = Dir["lib/**/*", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
 
   s.add_dependency "decidim-core", Decidim::GravityForms.version
 end
