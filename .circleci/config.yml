@@ -6,7 +6,12 @@ jobs:
   build:
     docker:
       - image: decidim/decidim@sha256:348fb1faa49cfe76ba7cbeafc67ca09002cf95f0ffa7a76eefa9d5b3774e0ee9
+        environment:
+          DATABASE_USERNAME: postgres
+
       - image: postgres
+        environment:
+          POSTGRES_USER: postgres
 
     working_directory: /app
 
