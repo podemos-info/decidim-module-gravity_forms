@@ -5,6 +5,8 @@ module Decidim
     module Admin
       # Administration of Gravity Forms
       class GravityFormsController < Admin::ApplicationController
+        helper_method :gravity_forms
+
         def new
           @form = form(GravityFormForm).instance
         end
@@ -23,6 +25,12 @@ module Decidim
               render action: "new"
             end
           end
+        end
+
+        private
+
+        def gravity_forms
+          @gravity_forms ||= GravityForm.where(feature: current_feature).page(params[:page]).per(15)
         end
       end
     end
