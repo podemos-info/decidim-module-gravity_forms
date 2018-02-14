@@ -3,7 +3,7 @@
     <h2 class="card-title">
       <%= t(".title") %>
 
-      <%= link_to t("actions.new", scope: "decidim.gravity_forms", name: t("models.gravity_form.name", scope: "decidim.gravity_forms.admin")), new_gravity_form_path, class: 'button tiny button--simple' if can? :manage, current_feature %>
+      <%= link_to t("actions.new", scope: "decidim.gravity_forms", name: t("models.gravity_form.name", scope: "decidim.gravity_forms.admin")), new_gravity_form_path, class: 'button tiny button--title' if can? :manage, current_feature %>
     </h2>
   </div>
 
