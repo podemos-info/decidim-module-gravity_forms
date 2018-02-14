@@ -5,24 +5,8 @@ require "spec_helper"
 describe Decidim::GravityForms::Admin::CreateGravityForm do
   subject { described_class.new(form) }
 
-  let(:organization) do
-    create(
-      :organization,
-      available_locales: [:en, :ca, :es],
-      default_locale: :en
-    )
-  end
-
-  let(:participatory_process) do
-    create :participatory_process, organization: organization
-  end
-
   let(:current_feature) do
-    create(
-      :feature,
-      participatory_space: participatory_process,
-      manifest_name: "gravity_forms"
-    )
+    create(:feature, manifest_name: "gravity_forms")
   end
 
   let(:form) do
