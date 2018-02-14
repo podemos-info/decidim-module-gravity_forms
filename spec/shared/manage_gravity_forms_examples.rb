@@ -43,6 +43,42 @@ shared_examples "manage gravity forms" do
     end
   end
 
+  describe "updating a gravity form" do
+    let!(:gravity_form) do
+      create(:gravity_form, feature: current_feature)
+    end
+
+    before do
+      visit_feature_admin
+
+      within find("tr", text: translated(gravity_form.title)) do
+        page.find(".action-icon--edit").click
+      end
+    end
+
+    it "shows a success message and shows the new info back in the index page" do
+      within ".edit_gravity_form" do
+        fill_in_i18n(
+          :gravity_form_title,
+          "#gravity_form-title-tabs",
+          en: "My new title",
+          es: "Mi nuevo título",
+          ca: "El meu nou títol"
+        )
+
+        find("*[type=submit]").click
+      end
+
+      within ".callout-wrapper" do
+        expect(page).to have_content("successfully")
+      end
+
+      within "table" do
+        expect(page).to have_content("My new title")
+      end
+    end
+  end
+
   describe "previewing gravity forms" do
     it "allows the user to preview the gravity form" do
       within find("tr", text: translated(gravity_form.title)) do

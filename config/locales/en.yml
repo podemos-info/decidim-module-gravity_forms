@@ -7,6 +7,7 @@ en:
     gravity_forms:
       actions:
         new: New
+        edit: Edit
         preview: Preview
         title: Actions
       admin:
@@ -14,6 +15,9 @@ en:
           create:
             invalid: There has been a problem while creating the gravity form.
             success: Gravity form created successfully.
+          edit:
+            title: Edit gravity form
+            update: Update gravity form
           form:
             form_number_help: Form number on Gravity Forms
             slug_help: "URL slugs are used to generate the URLs that load this form. Only accepts letters, numbers and dashes, and must start with a letter. Example: %{url}"
@@ -22,6 +26,9 @@ en:
             title: New Gravity Form
           index:
             title: Gravity Forms
+          update:
+            invalid: There has been a problem while updating the gravity form.
+            success: Gravity form updated successfully.
         models:
           gravity_form:
             name: Gravity Form

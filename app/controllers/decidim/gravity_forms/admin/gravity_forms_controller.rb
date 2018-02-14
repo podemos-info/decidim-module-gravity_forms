@@ -27,10 +27,38 @@ module Decidim
           end
         end
 
+        def edit
+          authorize! :edit, gravity_form
+
+          @form = form(GravityFormForm).from_model(gravity_form)
+        end
+
+        def update
+          authorize! :edit, gravity_form
+
+          @form = form(GravityFormForm).from_params(params, current_feature: current_feature)
+
+          UpdateGravityForm.call(@form, gravity_form) do
+            on(:ok) do
+              flash[:notice] = I18n.t("gravity_forms.update.success", scope: "decidim.gravity_forms.admin")
+              redirect_to gravity_forms_path
+            end
+
+            on(:invalid) do
+              flash.now[:alert] = I18n.t("gravity_forms.update.invalid", scope: "decidim.gravity_forms.admin")
+              render action: "edit"
+            end
+          end
+        end
+
         private
 
         def gravity_forms
           @gravity_forms ||= GravityForm.where(feature: current_feature)
+        end
+
+        def gravity_form
+          @gravity_form ||= gravity_forms.find(params[:id])
         end
       end
     end

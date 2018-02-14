@@ -24,7 +24,7 @@ module Decidim
         private
 
         def slug_uniqueness
-          return unless GravityForm.where(feature: current_feature, slug: slug).any?
+          return unless GravityForm.where(feature: current_feature, slug: slug).where.not(id: id).any?
 
           errors.add(:slug, :taken)
         end
