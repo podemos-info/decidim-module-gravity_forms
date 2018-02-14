@@ -21,7 +21,7 @@ module Decidim
 
       initializer "decidim_gravity_forms.inject_abilities_to_user" do |_app|
         Decidim.configure do |config|
-          config.abilities += ["Decidim::GravityForms::Abilities::CurrentUser"]
+          config.abilities += ["Decidim::GravityForms::Abilities::CurrentUserAbility"]
         end
       end
     end
