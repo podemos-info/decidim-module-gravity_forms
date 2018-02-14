@@ -10,6 +10,13 @@ shared_examples "manage gravity forms" do
       end
     end
 
+    it "shows all fields" do
+      expect(page).to have_field("gravity_form_title_en")
+      expect(page).to have_field("gravity_form_description_en")
+      expect(page).to have_field("gravity_form_form_number")
+      expect(page).to have_field("gravity_form_slug")
+    end
+
     it "shows a success message and displays the new form on the index page" do
       within ".new_gravity_form" do
         fill_in_i18n(
