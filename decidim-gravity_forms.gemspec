@@ -6,8 +6,8 @@ require "decidim/gravity_forms/version"
 
 Gem::Specification.new do |s|
   s.version = Decidim::GravityForms.version
-  s.authors = ["Your Name"]
-  s.email = ["your_email@example.org"]
+  s.authors = ["David Rodríguez"]
+  s.email = ["deivid.rodriguez@riseup.net"]
   s.license = "AGPL-3.0"
   s.homepage = "https://github.com/decidim/decidim-module-gravity_forms"
   s.required_ruby_version = ">= 2.3.1"
