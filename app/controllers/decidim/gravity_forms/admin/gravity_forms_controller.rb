@@ -30,7 +30,7 @@ module Decidim
         private
 
         def gravity_forms
-          @gravity_forms ||= GravityForm.where(feature: current_feature).page(params[:page]).per(15)
+          @gravity_forms ||= GravityForm.where(feature: current_feature)
         end
       end
     end
