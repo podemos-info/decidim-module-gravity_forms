@@ -15,6 +15,7 @@ shared_examples "manage gravity forms" do
       expect(page).to have_field("gravity_form_description_en")
       expect(page).to have_field("gravity_form_form_number")
       expect(page).to have_field("gravity_form_slug")
+      expect(page).to have_field("gravity_form_require_login")
     end
 
     it "shows a success message and displays the new form on the index page" do
