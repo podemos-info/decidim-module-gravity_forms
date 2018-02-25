@@ -15,7 +15,7 @@ describe "Gravity forms", type: :system do
     create(
       :gravity_forms_feature,
       participatory_space: participatory_space,
-      settings: { "domain" => "bored-sloth.w6.gravitydemo.com" }
+      settings: { "domain" => "unassuming-mongoose.w6.gravitydemo.com" }
     )
   end
 
