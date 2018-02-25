@@ -53,7 +53,7 @@ describe "Gravity forms", type: :system do
     end
 
     context "when multiple forms available" do
-      before do
+      let(:second_form) do
         create(
           :gravity_form,
           feature: feature,
@@ -62,60 +62,100 @@ describe "Gravity forms", type: :system do
           slug: "cuki-form-2",
           form_number: 2
         )
-
-        visit main_feature_path(feature)
       end
 
-      it "lists all forms and titles" do
-        expect(page).to have_selector(".card--gravity_form", count: 2)
-
-        expect(page).to have_selector(".card--gravity_form", text: "My first form Fill this in to become super cool")
-        expect(page).to have_selector(".card--gravity_form", text: "My second form Fill this in to become even cooler")
-      end
-
-      shared_examples_for "a locked form" do
-        it "does not grant access" do
-          within find(".card--gravity_form", text: "My first form") do
-            click_link "Fill in"
-          end
-
-          expect(page).to have_content "Please sign in"
-          expect(page).not_to have_selector("iframe")
+      context "and only one visible" do
+        before do
+          second_form.update!(hidden_at: Time.zone.now)
+          visit main_feature_path(feature)
         end
-      end
 
-      shared_examples_for "a public form" do
-        it "grants access" do
-          within find(".card--gravity_form", text: "My first form") do
-            click_link "Fill in"
-          end
-
+        it "redirects to the only visible form" do
           expect(page).to render_in_iframe("Tell us a little about yourself")
         end
       end
 
-      context "when user logged in" do
-        let(:require_login) { false }
-
+      context "and more than one visible" do
         before do
-          login_as user, scope: :user
-          refresh
+          second_form.update!(hidden_at: nil)
+          visit main_feature_path(feature)
         end
 
-        it_behaves_like "a public form"
-      end
+        shared_examples_for "a gravity form list" do
+          it "lists all visible forms and titles" do
+            expect(page).to have_selector(".card--gravity_form", count: 2)
 
-      context "when user not logged in" do
-        context "and form unlocked" do
+            expect(page).to have_selector(".card--gravity_form", text: "My first form Fill this in to become super cool")
+            expect(page).to have_selector(".card--gravity_form", text: "My second form Fill this in to become even cooler")
+          end
+        end
+
+        shared_examples_for "a locked form" do
+          it "does not grant access" do
+            within find(".card--gravity_form", text: "My first form") do
+              click_link "Fill in"
+            end
+
+            expect(page).to have_content "Please sign in"
+            expect(page).not_to have_selector("iframe")
+          end
+        end
+
+        shared_examples_for "a public form" do
+          it "grants access" do
+            within find(".card--gravity_form", text: "My first form") do
+              click_link "Fill in"
+            end
+
+            expect(page).to render_in_iframe("Tell us a little about yourself")
+          end
+        end
+
+        context "when no hidden forms" do
+          it_behaves_like "a gravity form list"
+        end
+
+        context "when some hidden forms" do
+          before do
+            create(
+              :gravity_form,
+              feature: feature,
+              title: "My third form",
+              description: "I'm invisible",
+              slug: "cuki-form-3",
+              form_number: 3,
+              hidden_at: Time.zone.now
+            )
+
+            refresh
+          end
+
+          it_behaves_like "a gravity form list"
+        end
+
+        context "when user logged in" do
           let(:require_login) { false }
+
+          before do
+            login_as user, scope: :user
+            refresh
+          end
 
           it_behaves_like "a public form"
         end
 
-        context "and form locked" do
-          let(:require_login) { true }
+        context "when user not logged in" do
+          context "and form unlocked" do
+            let(:require_login) { false }
 
-          it_behaves_like "a locked form"
+            it_behaves_like "a public form"
+          end
+
+          context "and form locked" do
+            let(:require_login) { true }
+
+            it_behaves_like "a locked form"
+          end
         end
       end
     end

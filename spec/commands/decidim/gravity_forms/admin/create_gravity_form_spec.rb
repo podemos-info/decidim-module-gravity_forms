@@ -17,9 +17,12 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
       slug: "my-slug",
       form_number: "7262",
       require_login: false,
+      hidden: hidden,
       current_feature: current_feature
     )
   end
+
+  let(:hidden) { false }
 
   context "when the form is not valid" do
     let(:invalid) { true }
@@ -47,6 +50,26 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
       expect(gravity_form.slug).to eq "my-slug"
       expect(gravity_form.form_number).to eq 7262
       expect(gravity_form.require_login).to eq false
+    end
+
+    context "when hidden is false in the form" do
+      let(:hidden) { false }
+
+      it "sets the hidden_at attribute to nil" do
+        subject.call
+
+        expect(gravity_form.hidden_at).to be_nil
+      end
+    end
+
+    context "when hidden is true in the form" do
+      let(:hidden) { true }
+
+      it "sets the hidden_at attribute to the current time" do
+        subject.call
+
+        expect(gravity_form.hidden_at).to be_within(1.second).of(Time.zone.now)
+      end
     end
   end
 end

@@ -3,17 +3,21 @@
 module Decidim
   module GravityForms
     class GravityFormsController < Decidim::GravityForms::ApplicationController
-      helper_method :gravity_form, :gravity_forms, :accessible_form?
+      helper_method :gravity_form, :visible_gravity_forms, :accessible_form?
 
       before_action :authenticate_user!, only: :show, if: -> { gravity_form.require_login }
 
       def index
-        if gravity_forms.one?
-          redirect_to gravity_forms.first if accessible_form?(gravity_forms.first)
+        if visible_gravity_forms.one?
+          redirect_to visible_gravity_forms.first if accessible_form?(visible_gravity_forms.first)
         end
       end
 
       private
+
+      def visible_gravity_forms
+        @visible_gravity_forms ||= gravity_forms.where(hidden_at: nil)
+      end
 
       def gravity_forms
         @gravity_forms ||= GravityForm.where(feature: current_feature)

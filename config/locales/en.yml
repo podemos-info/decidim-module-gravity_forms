@@ -46,6 +46,7 @@ en:
       models:
         gravity_form:
           fields:
+            hidden: Hidden
             title: Title
             form_number: Form number
             slug: Slug
