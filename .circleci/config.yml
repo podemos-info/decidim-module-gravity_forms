@@ -45,3 +45,22 @@ jobs:
 
       - store_artifacts:
           path: /app/spec/decidim_dummy_app/tmp/screenshots
+
+workflows:
+  version: 2
+
+  test:
+    jobs:
+      - build
+
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+
+    jobs:
+      - build
