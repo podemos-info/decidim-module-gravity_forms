@@ -1,4 +1,5 @@
 ---
+
 en:
   decidim:
     features:
@@ -20,7 +21,10 @@ en:
             update: Update gravity form
           form:
             form_number_help: Form number on Gravity Forms
-            slug_help: "URL slugs are used to generate the URLs that load this form. Only accepts letters, numbers and dashes, and must start with a letter. Example: %{url}"
+            slug_help: >-
+              URL slugs are used to generate the URLs that load this form. Only
+              accepts letters, numbers and dashes, and must start with a letter.
+              Example: %{url}
           new:
             create: Create Gravity Form
             title: New Gravity Form
