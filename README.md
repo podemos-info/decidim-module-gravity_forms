@@ -10,6 +10,9 @@ feature setting. The wordpress instance needs [Gravity
 Forms](https://www.gravityforms.com/) and the [gravity forms iframe
 plugin](https://github.com/cedaro/gravity-forms-iframe) installed.
 
+Also, any gravity form you try to embed needs to have the "Allow this form to be
+embedded in an iframe" setting added by the mentioned plugin checked.
+
 ## Installation
 
 Add this line to your application's Gemfile:
