@@ -21,8 +21,6 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
     )
   end
 
-  let(:invalid) { false }
-
   context "when the form is not valid" do
     let(:invalid) { true }
 
@@ -32,6 +30,8 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
   end
 
   context "when everything is ok" do
+    let(:invalid) { false }
+
     let(:gravity_form) { Decidim::GravityForms::GravityForm.last }
 
     it "creates the gravity form" do
