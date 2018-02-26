@@ -99,7 +99,7 @@ shared_examples "manage gravity forms" do
 
     context "when visible" do
       before do
-        gravity_form.update!(hidden_at: false)
+        gravity_form.update!(hidden: false)
       end
 
       it_behaves_like "a gravity form preview"
@@ -107,7 +107,7 @@ shared_examples "manage gravity forms" do
 
     context "when hidden" do
       before do
-        gravity_form.update!(hidden_at: true)
+        gravity_form.update!(hidden: true)
       end
 
       it_behaves_like "a gravity form preview"

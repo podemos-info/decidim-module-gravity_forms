@@ -66,7 +66,7 @@ describe "Gravity forms", type: :system do
 
       context "and only one visible" do
         before do
-          second_form.update!(hidden_at: Time.zone.now)
+          second_form.update!(hidden: true)
           visit main_feature_path(feature)
         end
 
@@ -77,7 +77,7 @@ describe "Gravity forms", type: :system do
 
       context "and more than one visible" do
         before do
-          second_form.update!(hidden_at: nil)
+          second_form.update!(hidden: false)
           visit main_feature_path(feature)
         end
 
@@ -124,7 +124,7 @@ describe "Gravity forms", type: :system do
               description: "I'm invisible",
               slug: "cuki-form-3",
               form_number: 3,
-              hidden_at: Time.zone.now
+              hidden: true
             )
 
             refresh

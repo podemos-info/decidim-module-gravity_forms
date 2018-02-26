@@ -16,7 +16,7 @@ module Decidim
       private
 
       def visible_gravity_forms
-        @visible_gravity_forms ||= gravity_forms.where(hidden_at: nil)
+        @visible_gravity_forms ||= gravity_forms.where(hidden: false)
       end
 
       def gravity_forms

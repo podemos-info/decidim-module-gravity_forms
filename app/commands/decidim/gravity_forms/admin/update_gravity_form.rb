@@ -37,7 +37,7 @@ module Decidim
             slug: form.slug,
             form_number: form.form_number,
             require_login: form.require_login,
-            hidden_at: form.hidden ? Time.zone.now : nil,
+            hidden: form.hidden,
             feature: form.current_feature
           )
         end
