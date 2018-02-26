@@ -17,11 +17,10 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
       slug: "my-slug",
       form_number: "7262",
       require_login: false,
+      hidden: false,
       current_feature: current_feature
     )
   end
-
-  let(:invalid) { false }
 
   context "when the form is not valid" do
     let(:invalid) { true }
@@ -32,6 +31,8 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
   end
 
   context "when everything is ok" do
+    let(:invalid) { false }
+
     let(:gravity_form) { Decidim::GravityForms::GravityForm.last }
 
     it "creates the gravity form" do
@@ -47,6 +48,7 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
       expect(gravity_form.slug).to eq "my-slug"
       expect(gravity_form.form_number).to eq 7262
       expect(gravity_form.require_login).to eq false
+      expect(gravity_form.hidden).to eq false
     end
   end
 end

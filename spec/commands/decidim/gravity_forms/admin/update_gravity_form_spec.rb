@@ -25,6 +25,7 @@ describe Decidim::GravityForms::Admin::UpdateGravityForm do
       slug: "new-slug",
       form_number: 57,
       require_login: false,
+      hidden: false,
       current_feature: current_feature
     )
   end
@@ -52,6 +53,7 @@ describe Decidim::GravityForms::Admin::UpdateGravityForm do
       expect(gravity_form.slug).to eq "new-slug"
       expect(gravity_form.form_number).to eq 57
       expect(gravity_form.require_login).to be false
+      expect(gravity_form.hidden).to be false
     end
   end
 end

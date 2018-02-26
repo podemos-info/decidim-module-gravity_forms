@@ -26,13 +26,17 @@ describe Decidim::GravityForms::Admin::GravityFormForm do
   let(:description) { Decidim::Faker::Localized.sentence(3) }
   let(:slug) { "my-slug" }
   let(:form_number) { 1 }
+  let(:require_login) { true }
+  let(:hidden) { false }
 
   let(:attributes) do
     {
       title: title,
       description: description,
       slug: slug,
-      form_number: form_number
+      form_number: form_number,
+      require_login: require_login,
+      hidden: hidden
     }
   end
 
@@ -94,6 +98,18 @@ describe Decidim::GravityForms::Admin::GravityFormForm do
 
   describe "when form number is zero" do
     let(:form_number) { 0 }
+
+    it { is_expected.not_to be_valid }
+  end
+
+  describe "when require_login is nil" do
+    let(:require_login) { nil }
+
+    it { is_expected.not_to be_valid }
+  end
+
+  describe "when hidden is nil" do
+    let(:hidden) { nil }
 
     it { is_expected.not_to be_valid }
   end

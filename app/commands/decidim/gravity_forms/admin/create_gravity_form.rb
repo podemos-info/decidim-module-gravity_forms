@@ -32,6 +32,7 @@ module Decidim
             slug: form.slug,
             form_number: form.form_number,
             require_login: form.require_login,
+            hidden: form.hidden,
             feature: form.current_feature
           )
         end
