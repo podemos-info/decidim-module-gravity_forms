@@ -5,6 +5,9 @@ en:
     features:
       gravity_forms:
         name: Forms
+        settings:
+          global:
+            domain: Domain
     gravity_forms:
       actions:
         edit: Edit
