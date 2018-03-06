@@ -7,8 +7,8 @@ en:
         name: Forms
     gravity_forms:
       actions:
-        new: New
         edit: Edit
+        new: New
         preview: Preview
         title: Actions
       admin:
@@ -25,11 +25,11 @@ en:
               URL slugs are used to generate the URLs that load this form. Only
               accepts letters, numbers and dashes, and must start with a letter.
               Example: %{url}
+          index:
+            title: Gravity Forms
           new:
             create: Create Gravity Form
             title: New Gravity Form
-          index:
-            title: Gravity Forms
           update:
             invalid: There has been a problem while updating the gravity form.
             success: Gravity form updated successfully.
@@ -47,6 +47,6 @@ en:
         gravity_form:
           fields:
             hidden: Hidden
-            title: Title
             form_number: Form number
             slug: Slug
+            title: Title
