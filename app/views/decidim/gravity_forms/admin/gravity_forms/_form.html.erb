@@ -32,10 +32,18 @@
 
     <div class="row column" >
       <%= form.check_box :require_login %>
+
+      <p class="help-text">
+        <%== t(".require_login_help") %>
+      </p>
     </div>
 
     <div class="row column" >
       <%= form.check_box :hidden %>
+
+      <p class="help-text">
+        <%== t(".hidden_help") %>
+      </p>
     </div>
   </div>
 </div>
