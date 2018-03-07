@@ -22,20 +22,20 @@
       </p>
     </div>
 
-    <div class="row column" >
-      <%= form.check_box :require_login %>
-    </div>
-
-    <div class="row column" >
-      <%= form.check_box :hidden %>
-    </div>
-
     <div class="row column slug">
       <%= form.text_field :slug %>
 
       <p class="help-text">
         <%== t(".slug_help", url: decidim_form_slug_url(main_feature_path(current_feature)[1..-2], form.object.slug)) %>
       </p>
+    </div>
+
+    <div class="row column" >
+      <%= form.check_box :require_login %>
+    </div>
+
+    <div class="row column" >
+      <%= form.check_box :hidden %>
     </div>
   </div>
 </div>
