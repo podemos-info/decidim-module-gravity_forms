@@ -1,7 +1,7 @@
 ---
 
 base_locale: en
-locales: [en]
+locales: [en, es]
 
 ignore_unused:
   - "decidim.features.gravity_forms.*"
