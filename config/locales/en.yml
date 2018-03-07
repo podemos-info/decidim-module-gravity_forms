@@ -1,6 +1,12 @@
 ---
-
 en:
+  activemodel:
+    attributes:
+      gravity_form:
+        form_number: Form number
+        hidden: Hidden
+        slug: Slug
+        title: Title
   decidim:
     features:
       gravity_forms:
@@ -46,10 +52,3 @@ en:
           gravity_forms_count:
             one: "%{count} form"
             other: "%{count} forms"
-      models:
-        gravity_form:
-          fields:
-            hidden: Hidden
-            form_number: Form number
-            slug: Slug
-            title: Title
