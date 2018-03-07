@@ -13,11 +13,23 @@
         <thead>
           <tr>
             <th>
-              <%= t("models.gravity_form.fields.title", scope: "decidim.gravity_forms") %>
+              <%= t("activemodel.attributes.gravity_form.title") %>
             </th>
 
             <th>
-              <%= t("models.gravity_form.fields.form_number", scope: "decidim.gravity_forms") %>
+              <%= t("activemodel.attributes.gravity_form.form_number") %>
+            </th>
+
+            <th>
+              <%= t("activemodel.attributes.gravity_form.hidden") %>
+            </th>
+
+            <th>
+              <%= t("activemodel.attributes.gravity_form.require_login") %>
+            </th>
+
+            <th>
+              <%= t("activemodel.attributes.gravity_form.slug") %>
             </th>
 
             <th class="actions">
@@ -35,6 +47,18 @@
 
               <td>
                 <%= gravity_form.form_number %>
+              </td>
+
+              <td>
+                <%= gravity_form.hidden %>
+              </td>
+
+              <td>
+                <%= gravity_form.require_login %>
+              </td>
+
+              <td>
+                <%= gravity_form.slug %>
               </td>
 
               <td class="table-list__actions">
