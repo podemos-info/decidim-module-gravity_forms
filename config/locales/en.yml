@@ -3,6 +3,7 @@ en:
   activemodel:
     attributes:
       gravity_form:
+        description: Description
         form_number: Form number
         hidden: Hidden
         require_login: Requires login

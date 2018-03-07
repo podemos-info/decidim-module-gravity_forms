@@ -4,6 +4,7 @@ base_locale: en
 locales: [en, es]
 
 ignore_unused:
+  - activemodel.attributes.gravity_form.description
   - "decidim.features.gravity_forms.*"
 
 ignore_missing:
