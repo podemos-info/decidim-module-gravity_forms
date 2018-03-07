@@ -31,7 +31,7 @@ module Decidim
         attr_reader :gravity_form, :form
 
         def update_gravity_form
-          gravity_form.update_attributes!(
+          gravity_form.update!(
             title: form.title,
             description: form.description,
             slug: form.slug,
