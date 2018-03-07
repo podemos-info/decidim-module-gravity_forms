@@ -54,9 +54,6 @@ plugins:
   markdownlint:
     enabled: true
 
-  rubocop:
-    enabled: true
-
 exclude_patterns:
   - development_app
   - spec/decidim_dummy_app
