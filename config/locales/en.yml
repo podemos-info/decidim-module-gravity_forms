@@ -5,6 +5,7 @@ en:
       gravity_form:
         form_number: Form number
         hidden: Hidden
+        require_login: Requires login
         slug: Slug
         title: Title
   decidim:
