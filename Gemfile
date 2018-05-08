@@ -24,3 +24,5 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "~> 3.5"
 end
+
+gem "puffing-billy", "~> 1.1", group: :test

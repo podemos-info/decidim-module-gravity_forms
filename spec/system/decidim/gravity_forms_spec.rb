@@ -6,6 +6,7 @@ describe "Gravity forms", type: :system do
   include_context "with a feature"
 
   before do
+    driven_by(:selenium_chrome_headless_billy)
     switch_to_host(organization.host)
   end
 
