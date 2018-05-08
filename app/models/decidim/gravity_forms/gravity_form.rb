@@ -4,7 +4,7 @@ module Decidim
   module GravityForms
     class GravityForm < ApplicationRecord
       include Decidim::Resourceable
-      include Decidim::HasFeature
+      include Decidim::HasComponent
     end
   end
 end

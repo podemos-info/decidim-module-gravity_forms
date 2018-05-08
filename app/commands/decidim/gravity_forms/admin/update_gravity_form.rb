@@ -38,7 +38,7 @@ module Decidim
             form_number: form.form_number,
             require_login: form.require_login,
             hidden: form.hidden,
-            feature: form.current_feature
+            component: form.current_component
           )
         end
       end

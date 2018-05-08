@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe "Gravity forms", type: :system do
-  include_context "with a feature"
+  include_context "with a component"
 
   before do
     driven_by(:selenium_firefox_headless_billy)
@@ -12,9 +12,9 @@ describe "Gravity forms", type: :system do
 
   let(:manifest_name) { "gravity_forms" }
 
-  let(:feature) do
+  let(:component) do
     create(
-      :gravity_forms_feature,
+      :gravity_forms_component,
       participatory_space: participatory_space,
       settings: { "domain" => "victorious-dog.w6.gravitydemo.com" }
     )
@@ -34,7 +34,7 @@ describe "Gravity forms", type: :system do
     before do
       create(
         :gravity_form,
-        feature: feature,
+        component: component,
         title: "My first form",
         description: "Fill this in to become super cool",
         slug: "cuki-form",
@@ -45,7 +45,7 @@ describe "Gravity forms", type: :system do
 
     context "when a single form available" do
       before do
-        visit main_feature_path(feature)
+        visit main_component_path(component)
       end
 
       it "redirects to the only available form" do
@@ -57,7 +57,7 @@ describe "Gravity forms", type: :system do
       let(:second_form) do
         create(
           :gravity_form,
-          feature: feature,
+          component: component,
           title: "My second form",
           description: "Fill this in to become even cooler",
           slug: "cuki-form-2",
@@ -68,7 +68,7 @@ describe "Gravity forms", type: :system do
       context "and only one visible" do
         before do
           second_form.update!(hidden: true)
-          visit main_feature_path(feature)
+          visit main_component_path(component)
         end
 
         it "redirects to the only visible form" do
@@ -79,7 +79,7 @@ describe "Gravity forms", type: :system do
       context "and more than one visible" do
         before do
           second_form.update!(hidden: false)
-          visit main_feature_path(feature)
+          visit main_component_path(component)
         end
 
         shared_examples_for "a gravity form list" do
@@ -120,7 +120,7 @@ describe "Gravity forms", type: :system do
           before do
             create(
               :gravity_form,
-              feature: feature,
+              component: component,
               title: "My third form",
               description: "I'm invisible",
               slug: "cuki-form-3",
@@ -166,7 +166,7 @@ describe "Gravity forms", type: :system do
     let!(:gravity_form) do
       create(
         :gravity_form,
-        feature: feature,
+        component: component,
         title: "My cuki form",
         description: "Fill this in to become super cool",
         slug: "cuki-form",
@@ -178,7 +178,7 @@ describe "Gravity forms", type: :system do
       visit decidim_participatory_process_gravity_forms.gravity_form_path(
         id: gravity_form.id,
         participatory_process_slug: participatory_space.slug,
-        feature_id: feature.id
+        component_id: component.id
       )
     end
 

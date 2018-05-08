@@ -7,21 +7,21 @@ module Decidim
     describe GravityFormsController, type: :controller do
       routes { Decidim::GravityForms::Engine.routes }
 
-      let(:user) { create(:user, :confirmed, organization: feature.organization) }
+      let(:user) { create(:user, :confirmed, organization: component.organization) }
 
       let(:params) do
         {
           id: gravity_form.id,
-          feature_id: feature.id
+          component_id: component.id
         }
       end
 
-      let(:feature) { gravity_form.feature }
+      let(:component) { gravity_form.component }
 
       before do
-        request.env["decidim.current_organization"] = feature.organization
-        request.env["decidim.current_participatory_space"] = feature.participatory_space
-        request.env["decidim.current_feature"] = feature
+        request.env["decidim.current_organization"] = component.organization
+        request.env["decidim.current_participatory_space"] = component.participatory_space
+        request.env["decidim.current_component"] = component
       end
 
       shared_examples_for "a successful page visit" do

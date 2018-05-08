@@ -10,7 +10,7 @@ es:
         slug: Slug
         title: Título
   decidim:
-    features:
+    components:
       gravity_forms:
         name: Formularios
         settings:

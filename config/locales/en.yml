@@ -10,7 +10,7 @@ en:
         slug: Slug
         title: Title
   decidim:
-    features:
+    components:
       gravity_forms:
         name: Forms
         settings:

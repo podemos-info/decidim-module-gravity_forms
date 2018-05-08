@@ -12,7 +12,7 @@ module Decidim
         end
 
         def create
-          @form = form(GravityFormForm).from_params(params, current_feature: current_feature)
+          @form = form(GravityFormForm).from_params(params, current_component: current_component)
 
           CreateGravityForm.call(@form) do
             on(:ok) do
@@ -36,7 +36,7 @@ module Decidim
         def update
           authorize! :edit, gravity_form
 
-          @form = form(GravityFormForm).from_params(params, current_feature: current_feature)
+          @form = form(GravityFormForm).from_params(params, current_component: current_component)
 
           UpdateGravityForm.call(@form, gravity_form) do
             on(:ok) do
@@ -54,7 +54,7 @@ module Decidim
         private
 
         def gravity_forms
-          @gravity_forms ||= GravityForm.where(feature: current_feature)
+          @gravity_forms ||= GravityForm.where(component: current_component)
         end
 
         def gravity_form

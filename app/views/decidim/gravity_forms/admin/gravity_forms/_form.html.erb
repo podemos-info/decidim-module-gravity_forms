@@ -26,7 +26,7 @@
       <%= form.text_field :slug %>
 
       <p class="help-text">
-        <%== t(".slug_help", url: decidim_form_slug_url(main_feature_path(current_feature)[1..-2], form.object.slug)) %>
+        <%== t(".slug_help", url: decidim_form_slug_url(main_component_path(current_component)[1..-2], form.object.slug)) %>
       </p>
     </div>
 

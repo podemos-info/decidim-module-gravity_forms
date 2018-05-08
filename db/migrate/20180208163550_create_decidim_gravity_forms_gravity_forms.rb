@@ -8,7 +8,7 @@ class CreateDecidimGravityFormsGravityForms < ActiveRecord::Migration[5.1]
       t.integer :form_number, null: false
       t.string :slug, null: false
       t.boolean :require_login, default: true, null: false
-      t.references :decidim_feature
+      t.references :decidim_component, index: { name: :index_decidim_gravity_forms_on_decidim_component_id }
 
       t.timestamps
     end

@@ -20,7 +20,7 @@ module Decidim
       end
 
       def gravity_forms
-        @gravity_forms ||= GravityForm.where(feature: current_feature)
+        @gravity_forms ||= GravityForm.where(component: current_component)
       end
 
       def gravity_form

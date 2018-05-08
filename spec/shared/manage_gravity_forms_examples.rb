@@ -3,7 +3,7 @@
 shared_examples "manage gravity forms" do
   describe "creating a gravity form" do
     before do
-      visit_feature_admin
+      visit_component_admin
 
       within ".card-title" do
         click_link "New"
@@ -47,11 +47,11 @@ shared_examples "manage gravity forms" do
 
   describe "updating a gravity form" do
     let!(:gravity_form) do
-      create(:gravity_form, feature: current_feature)
+      create(:gravity_form, component: current_component)
     end
 
     before do
-      visit_feature_admin
+      visit_component_admin
 
       within find("tr", text: translated(gravity_form.title)) do
         page.find(".action-icon--edit").click
