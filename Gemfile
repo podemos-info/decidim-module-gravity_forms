@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", git: "https://github.com/decidim/decidim", branch: "master"
+gem "decidim", "0.10.1"
 gem "decidim-gravity_forms", path: "."
 
 gem "puma", "~> 3.0"
@@ -13,7 +13,7 @@ gem "uglifier", "~> 4.1"
 group :development, :test do
   gem "byebug", "~> 10.0", platform: :mri
 
-  gem "decidim-dev", git: "https://github.com/decidim/decidim", branch: "master"
+  gem "decidim-dev", "0.10.1"
 end
 
 group :development do
@@ -24,3 +24,5 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "~> 3.5"
 end
+
+gem "puffing-billy", "~> 1.1", group: :test

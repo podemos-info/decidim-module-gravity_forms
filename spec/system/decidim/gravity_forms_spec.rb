@@ -6,6 +6,7 @@ describe "Gravity forms", type: :system do
   include_context "with a feature"
 
   before do
+    driven_by(:selenium_firefox_headless_billy)
     switch_to_host(organization.host)
   end
 
@@ -15,7 +16,7 @@ describe "Gravity forms", type: :system do
     create(
       :gravity_forms_feature,
       participatory_space: participatory_space,
-      settings: { "domain" => "unassuming-mongoose.w6.gravitydemo.com" }
+      settings: { "domain" => "victorious-dog.w6.gravitydemo.com" }
     )
   end
 

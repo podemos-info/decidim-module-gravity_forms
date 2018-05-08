@@ -19,6 +19,6 @@ FactoryBot.define do
     slug { generate(:gravity_form_slug) }
     form_number 1
     require_login false
-    feature { create(:gravity_forms_feature) }
+    feature { create(:gravity_forms_feature) } # rubocop:disable RSpec/EmptyExampleGroup
   end
 end
