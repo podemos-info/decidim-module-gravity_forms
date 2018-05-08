@@ -3,7 +3,7 @@
 require "decidim/gravity_forms/admin"
 require "decidim/gravity_forms/engine"
 require "decidim/gravity_forms/admin_engine"
-require "decidim/gravity_forms/feature"
+require "decidim/gravity_forms/component"
 
 module Decidim
   # This namespace holds the logic of the `GravityForms` component. This component

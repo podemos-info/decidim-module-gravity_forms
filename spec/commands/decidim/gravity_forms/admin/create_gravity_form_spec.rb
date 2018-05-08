@@ -5,8 +5,8 @@ require "spec_helper"
 describe Decidim::GravityForms::Admin::CreateGravityForm do
   subject { described_class.new(form) }
 
-  let(:current_feature) do
-    create(:feature, manifest_name: "gravity_forms")
+  let(:current_component) do
+    create(:component, manifest_name: "gravity_forms")
   end
 
   let(:form) do
@@ -18,7 +18,7 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
       form_number: "7262",
       require_login: false,
       hidden: false,
-      current_feature: current_feature
+      current_component: current_component
     )
   end
 
@@ -42,7 +42,7 @@ describe Decidim::GravityForms::Admin::CreateGravityForm do
     it "sets the correct attributes" do
       subject.call
 
-      expect(gravity_form.feature).to eq current_feature
+      expect(gravity_form.component).to eq current_component
       expect(translated(gravity_form.title)).to eq "title"
       expect(translated(gravity_form.description)).to eq "description"
       expect(gravity_form.slug).to eq "my-slug"

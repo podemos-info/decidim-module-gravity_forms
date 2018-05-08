@@ -10,7 +10,7 @@ describe Decidim::GravityForms::Admin::GravityFormForm do
   let(:context) do
     {
       current_organization: organization,
-      current_feature: current_feature
+      current_component: current_component
     }
   end
 
@@ -18,8 +18,8 @@ describe Decidim::GravityForms::Admin::GravityFormForm do
     create :participatory_process, organization: organization
   end
 
-  let(:current_feature) do
-    create :feature, participatory_space: participatory_process
+  let(:current_component) do
+    create :component, participatory_space: participatory_process
   end
 
   let(:title) { Decidim::Faker::Localized.sentence }
@@ -67,7 +67,7 @@ describe Decidim::GravityForms::Admin::GravityFormForm do
   end
 
   describe "when slug is not unique" do
-    before { create(:gravity_form, feature: current_feature, slug: slug) }
+    before { create(:gravity_form, component: current_component, slug: slug) }
 
     it { is_expected.not_to be_valid }
   end

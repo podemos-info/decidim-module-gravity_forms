@@ -13,7 +13,7 @@ describe Decidim::GravityForms::Admin::UpdateGravityForm do
       slug: "old-slug",
       form_number: 42,
       require_login: true,
-      feature: current_feature
+      component: current_component
     )
   end
 
@@ -26,12 +26,12 @@ describe Decidim::GravityForms::Admin::UpdateGravityForm do
       form_number: 57,
       require_login: false,
       hidden: false,
-      current_feature: current_feature
+      current_component: current_component
     )
   end
 
-  let(:current_feature) do
-    create(:feature, manifest_name: "gravity_forms")
+  let(:current_component) do
+    create(:component, manifest_name: "gravity_forms")
   end
 
   context "when the form is not valid" do
