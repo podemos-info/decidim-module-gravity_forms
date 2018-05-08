@@ -3,21 +3,28 @@
 require "billy/capybara/rspec"
 
 Billy.configure do |config|
-  config.whitelist = [/lvh\.me/]
+  config.whitelist = [/lvh\.me/, /mozilla/, /digicert/, /ciscobinary/, /firefox/]
   config.cache = true
   config.persist_cache = true
   config.cache_path = "spec/fixtures/billy"
 end
 
-Capybara.register_driver :selenium_chrome_headless_billy do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument("--proxy-server=#{Billy.proxy.host}:#{Billy.proxy.port}")
-  options.args << "--headless"
+Capybara.register_driver :selenium_firefox_headless_billy do |app|
+  options = Selenium::WebDriver::Firefox::Options.new
+  options.add_argument("--headless")
+
+  capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(
+    acceptInsecureCerts: true,
+    proxy: {
+      http: "#{Billy.proxy.host}:#{Billy.proxy.port}",
+      ssl: "#{Billy.proxy.host}:#{Billy.proxy.port}"
+    }
+  )
 
   Capybara::Selenium::Driver.new(
     app,
-    browser: :chrome,
-    options: options
+    options: options,
+    desired_capabilities: capabilities
   )
 end
 
