@@ -17,5 +17,5 @@ spec/decidim_dummy_app
 development_app
 
 # rubocop cached remote config
-.rubocop-https---raw-githubusercontent-com-decidim-decidim-master--rubocop-yml
-.rubocop-https---raw-githubusercontent-com-decidim-decidim-master--rubocop-rails-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-v0-11-0-pre1--rubocop-yml
+.rubocop-https---raw-githubusercontent-com-decidim-decidim-v0-11-0-pre1--rubocop-rails-yml
